@@ -14,20 +14,22 @@ int main(){
 	
 		for(int i=0; i<line; i++) {
 			fscanf(fp, "%d %c %d",&operand1, &operator, &operand2);
+			double (*pointerOfFunction)(int, int);
 			switch(operator) {
 				case '+':
-				result = add(operand1, operand2);
+				pointerOfFunction = add;
 				break;
 				case '-':
-				result = minus(operand1, operand2);
+				pointerOfFunction = minus;
 				break;
 				case '*':
-				result = mul(operand1, operand2);
+				pointerOfFunction = mul;	
 				break;
 				case '/':
-				result = div(operand1, operand2);
+				pointerOfFunction = div;
 				break;
 			}		
+			result = pointerOfFunction(operand1,operand2);
 			printf("%d %c %d = %lf\n",
 				 operand1, operator, operand2, result);
 		}
